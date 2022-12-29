@@ -1,0 +1,49 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+time.sleep(5)
+driver.maximize_window()
+
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[normalize-space()='Login").click()
+#Admin
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Admin")
+
+#PIM
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("PIM")
+
+#Leave
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Leave")
+
+#Time
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Time")
+
+#Recuitment
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Recuitment")
+
+#My Info
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("My Info")
+
+#Peformance
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Peformance")
+
+#Dashboard
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Dashboard")
+
+#Directory
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Directory")
+
+#Maintenace
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Maintenace")
+
+#Buzz
+driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Buzz")
+
+driver.close()

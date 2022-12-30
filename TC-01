@@ -15,35 +15,47 @@ driver.find_element(By.NAME,"password").send_keys("admin123")
 driver.find_element(By.XPATH,"//button[normalize-space()='Login").click()
 #Admin
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Admin")
+time.sleep(3)
 
 #PIM
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("PIM")
+time.sleep(3)
 
 #Leave
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Leave")
+time.sleep(3)
 
 #Time
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Time")
+time.sleep(3)
 
 #Recuitment
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Recuitment")
+time.sleep(3)
 
 #My Info
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("My Info")
+time.sleep(3)
 
 #Peformance
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Peformance")
+time.sleep(3)
 
-#Dashboard
+#Dashboa
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Dashboard")
+time.sleep(3)
 
 #Directory
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Directory")
+time.sleep(3)
 
 #Maintenace
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Maintenace")
+time.sleep(3)
 
 #Buzz
 driver.find_element(By.XPATH,"//input[@placeholder='Search']").send_keys("Buzz")
+time.sleep(3)
+
 
 driver.close()

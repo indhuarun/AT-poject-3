@@ -1,0 +1,53 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+
+#Admin page
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+time.sleep(3)
+
+#PIMmodule
+driver.find_element(By.XPATH,"//li[@class='oxd-main-menu-item-wrapper']").click()
+time.sleep(3)
+
+#Employee list page
+driver.find_element(By.LINK_TEXT,"Employee List").click()
+time.sleep(3)
+
+#personal details:
+
+driver.find_element(By.NAME,"Type for hints...").send_keys("Anthony  Nolan")
+#(//input)[6]
+
+driver.find_element(By.XPATH,"//input[@placeholder='Type for hints...'])[2]").send_keys("Linda Jane Anderson")
+time.sleep(3)
+
+#job tittle
+dropdown=driver.find_element(By.NAME,"Job Title").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Sales Representative")
+time.sleep(3)
+
+#Sub  title:
+dropdown=driver.find_element(By.NAME,"Sub Unit").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Sales")
+time.sleep(3)
+
+#validating :
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+time.sleep(3)
+
+driver.close()

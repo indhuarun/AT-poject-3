@@ -1,0 +1,48 @@
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+
+#Admin page
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+#PIMmodule
+
+driver.find_element(By.XPATH,"//li[@class='oxd-main-menu-item-wrapper']").click()
+
+#click add
+driver.find_element(By.XPATH,"//button[normalize-space()='Add']").click()
+
+#employee details
+driver.find_element(By.NAME,"firstName").send_keys("Arun")
+driver.find_element(By.NAME,"lastName").send_keys("prasath")
+driver.find_element(By.CSS_SELECTOR,"input.oxd-input oxd-input--active").send_keys("0357")
+
+
+#create login details:
+driver.find_element(By.XPATH,"//span[@class='oxd-switch-input oxd-switch-input--active --label-right']").click()
+
+#Details
+driver.find_element(By.NAME,"username").send_keys("Arunprasath")
+
+#Enable radio button:
+driver.find_element(By.XPATH,"//label[normalize-space()='Enabled']").click()
+
+
+driver.find_element(By.NAME,"password").send_keys("Arun@123")
+driver.find_element(By.NAME,"Confirm Password").send_keys("Arun@123")
+
+#save
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+driver.close()

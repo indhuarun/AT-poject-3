@@ -1,0 +1,77 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+
+#Admin page
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+time.sleep(3)
+
+#pim :
+driver.find_element(By.XPATH,"//a[@class='oxd-main-menu-item active toggle']").click()
+
+#Employee:
+driver.find_element(By.LINK_TEXT,"Employee List").click()
+
+driver.find_element(By.XPATH,"(//div[@class='card-center'])[2]").click()
+
+driver.find_element(By.LINK_TEXT,"Salary").click()
+
+driver.find_element(By.XPATH,"(//button[@type='button'][normalize-space()='Add'])[1]").click()
+
+#details:
+driver.find_element(By.XPATH,"Salary Component").send_keys("basic salary")
+
+
+dropdown=driver.find_element(By.NAME,"Pay Grade").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Grade 3")
+time.sleep(3)
+
+dropdown=driver.find_element(By.NAME,"Pay Frequency").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Monthly")
+time.sleep(3)
+
+dropdown=driver.find_element(By.NAME,"Currency").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("United States Dollar")
+time.sleep(3)
+
+driver.find_element(By.XPATH,"//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[5]/div[1]/div[2]").send_keys("35000")
+
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+#Direct deposit page:
+driver.find_element(By.XPATH,"//span[@class='oxd-switch-input oxd-switch-input--active --label-right']").click()
+
+driver.find_element(By.XPATH,"//div[4]//div[1]//div[1]//div[1]//div[2]//input[1]").send_keys("134567")
+
+dropdown=driver.find_element(By.NAME,"Account Type").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Savings")
+time.sleep(3)
+
+driver.find_element(By.XPATH,"//div[4]//div[1]//div[1]//div[1]//div[2]//input[1]").send_keys("12345")
+
+driver.find_element(By.XPATH,"(//input[@class='oxd-input oxd-input--active'])[6]").send_keys("35000")
+
+
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+driver.close()
+
+

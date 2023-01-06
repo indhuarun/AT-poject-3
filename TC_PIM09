@@ -1,0 +1,73 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+
+#Admin page
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+time.sleep(3)
+
+#pim 
+driver.find_element(By.XPATH,"//a[@class='oxd-main-menu-item active toggle']").click()
+
+#
+driver.find_element(By.LINK_TEXT,"Employee List").click()
+
+#Select a Employee
+driver.find_element(By.XPATH,"(//div[@class='card-center'])[1]").click()
+
+#job 
+driver.find_element(By.LINK_TEXT,"Job").click()
+
+#job details
+driver.find_element(By.XPATH,"//input[@placeholder='yyyy-mm-dd'").send_keys("2022-01-19")
+
+dropdown=driver.find_element(By.NAME,"Job Title").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Account Assistant")
+time.sleep(3)
+
+dropdown=driver.find_element(By.NAME,"Job Category").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Office and Clerical Workers")
+time.sleep(3)
+
+dropdown=driver.find_element(By.NAME,"Sub Unit").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("TechOps")
+time.sleep(3)
+
+dropdown=driver.find_element(By.NAME,"Location").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Canadian Regional HQ")
+time.sleep(3)
+
+dropdown=driver.find_element(By.NAME,"Employment Status").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Full-Time Permanent")
+time.sleep(3)
+
+driver.find_element(By.XPATH,"//span[@class='oxd-switch-input oxd-switch-input--active --label-right']").click()
+
+#contact details:
+driver.find_element(By.XPATH,"(//input[@placeholder='yyyy-mm-dd'])[2]").send_keys("2022-01-19")
+
+driver.find_element(By.XPATH,"(//input[@placeholder='yyyy-mm-dd'])[3]").send_keys("2023-01-19")
+
+driver.find_element(By.XPATH,"(//button[normalize-space()='Save'])[1])").click()
+
+driver.close()

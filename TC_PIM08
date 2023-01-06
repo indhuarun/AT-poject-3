@@ -1,0 +1,48 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+
+#Admin page
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+time.sleep(3)
+
+driver.find_element(By.XPATH,"//a[@class='oxd-main-menu-item active'").click()
+
+
+#Dependency details:
+
+driver.find_element(By.LINK_TEXT,"Dependents").click
+
+#Assigned depends:
+driver.find_element(By.XPATH,"(//button[@type='button'][normalize-space()='Add'])[1]").click()
+
+#Adding details:
+
+#Name:
+driver.find_element(By.XPATH,"(//input[@class='oxd-input oxd-input--active'])[2]").send_keys("qqq")
+
+#Relationship
+dropdown=driver.find_element(By.NAME,"Relationship").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Child")
+time.sleep(3)
+
+
+#DateofBirth:
+driver.find_element(By.XPATH,"//input[@placeholder='yyyy-mm-dd']").send_keys("2020-03-19")
+
+#Save:
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+driver.close()

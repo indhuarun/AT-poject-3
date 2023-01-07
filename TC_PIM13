@@ -1,0 +1,62 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+serv_obj=Service("C:\DRIVERS\chromedriver_win32\chromedriver_exe")
+driver=webdriver.Chrome(service=serv_obj)
+
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+
+#Admin page
+driver.find_element(By.NAME,"username").send_keys("Admin")
+driver.find_element(By.NAME,"password").send_keys("admin123")
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+time.sleep(3)
+
+#pim :
+driver.find_element(By.XPATH,"//a[@class='oxd-main-menu-item active toggle']").click()
+
+#tax exemptions:
+driver.find_element(By.XPATH,"//a[normalize-space()='Tax Exemptions']").click()
+
+#Federal Income Tax
+
+dropdown=driver.find_element(By.NAME,"Status").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Married")
+
+driver.find_element(By.XPATH,"body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/input[1]").send_keys("2")
+
+#State Income Tax
+
+dropdown=driver.find_element(By.NAME,"State").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Indiana")
+
+dropdown=driver.find_element(By.NAME,"Status").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Married")
+
+driver.find_element(By.XPATH,"body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/input[1]").send_keys("2")
+
+
+dropdown=driver.find_element(By.NAME,"Unemployment State").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Indiana")
+
+
+dropdown=driver.find_element(By.NAME,"Work State").click()
+dropdown=Select(dropdown)
+
+dropdown.select_by_visible_text("Indiana")
+
+driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+driver.close()

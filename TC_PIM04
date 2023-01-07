@@ -14,30 +14,33 @@ driver.maximize_window()
 driver.find_element(By.NAME,"username").send_keys("Admin")
 driver.find_element(By.NAME,"password").send_keys("admin123")
 driver.find_element(By.XPATH,"//button[@type='submit']").click()
-time.sleep(3)
+
+
 
 driver.find_element(By.XPATH,"//a[@class='oxd-main-menu-item active'").click()
 
-#CONTACT DETAILS:
+#validating the Pim page
+driver.find_element(By.LINK_TEXT,"Personal Details").click()
+
+
 driver.find_element(By.LINK_TEXT,"Contact Details").click()
 
-driver.find_element(By.XPATH,"//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[2]ATH,").send_keys("abc")
+driver.find_element(By.LINK_TEXT,"Emergency Contacts").click
 
-driver.find_element(By.XPATH,"(//input)[3]").send_keys("peelamedu")
+driver.find_element(By.LINK_TEXT,"Dependents").click
 
-driver.find_element(By.XPATH,"//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[3]/div[1]/div[2").send_keys("coimbatore")
+driver.find_element(By.LINK_TEXT,"Immigration").click
 
-driver.find_element(By.XPATH,"//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[3]/div[1]/div[2]").send_keys("Tamilnadu")
+driver.find_element(By.LINK_TEXT,"Job").click
 
-driver.find_element(By.XPATH,"(//input)[6]").send_keys("641004")
+driver.find_element(By.LINK_TEXT,"Salary").click
 
+driver.find_element(By.LINK_TEXT,"Tax Exemptions").click
 
-dropdown=driver.find_element(By.NAME,"Country").click()
-dropdown=Select(dropdown)
+driver.find_element(By.LINK_TEXT,"Report-to").click
 
-dropdown.select_by_visible_text("India")
+driver.find_element(By.LINK_TEXT,"Qualifications").click
 
-
-driver.find_element(By.XPATH,"//button[@type='submit']").click()
+driver.find_element(By.LINK_TEXT,"Memberships").click
 
 driver.close()
